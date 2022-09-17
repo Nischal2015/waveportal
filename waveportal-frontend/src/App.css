@@ -31,3 +31,8 @@
   border: 0;
   border-radius: 5px;
 }
+
+.messageBox {
+  margin-top: 12px;
+  height: 28px;
+}
