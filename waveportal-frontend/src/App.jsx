@@ -1,9 +1,14 @@
 import { ethers } from "ethers";
 import { useEffect, useState } from "react";
+import abi from "./utils/WavePortal.json";
 import "./App.css";
 
 export default function App() {
   const [currentAccount, setCurrentAccount] = useState("");
+
+  const contractAddress = "0x924040f18aeAeB71Ce4549032778fC9825a569c8";
+
+  const contractABI = abi.abi;
 
   const checkIfWalletIsConnected = async () => {
     try {
@@ -60,6 +65,13 @@ export default function App() {
         );
 
         let count = await wavePortalContract.getTotalWaves();
+        console.log(`Retrieved total wave count...${count.toNumber()}`);
+
+        // Execute wave from smart contract
+        const waveTxn = await wavePortalContract.wave();
+        console.log(`Mining...${waveTxn.hash}`);
+
+        await waveTxn.wait();
         console.log(`Retrieved total wave count...${count.toNumber()}`);
       } else {
         console.log("Ethereum object doesn't exist!");
