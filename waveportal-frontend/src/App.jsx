@@ -8,7 +8,7 @@ export default function App() {
   const [allWaves, setAllWaves] = useState([]);
   const messageInput = useRef("");
 
-  const contractAddress = "0x7c85b5D2AeC861d0385c964358f795BD580eAe9f";
+  const contractAddress = "0xAA190Eb26617FA8DD65a2755fE41870c387d73fF";
 
   const contractABI = abi.abi;
 
